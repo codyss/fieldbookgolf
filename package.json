@@ -1,0 +1,18 @@
+{
+  "name": "fieldbook",
+  "version": "1.0.0",
+  "description": "Building structure for working with Fieldbook",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "airtable": "^0.2.2",
+    "body-parser": "^1.14.2",
+    "express": "^4.13.4",
+    "node-fieldbook": "^1.0.7"
+  }
+}
