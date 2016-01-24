@@ -10,8 +10,10 @@
 }
 
 #courses {
-    width: 200px;
-    background-color: red;
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    
 }
 
 
@@ -67,11 +69,4 @@
     overflow-y: auto;
     font-size: 16pt;
 }
-
-
-body {
-    background-image: url(http://www.streamsongresort.com/wp-content/uploads/2014/01/brick-streamsong-red.jpg);
-    max-height: 650px;
-}
-
 
