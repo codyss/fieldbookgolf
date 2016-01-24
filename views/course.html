@@ -12,33 +12,20 @@
 
     <!-- Local CSS -->
     <link href="/main.css" rel="stylesheet" >
-
-    <title>NYC Courses</title>
+    <title>{{course.course}}</title>
 </head>
 <body>
 
   <div id="courses">
     <table class="table">
-      <tr><th>Course</th><th>City</th><th>State</th></tr>
-      {% for course in courses %}
-        <tr><td><a href="/{{course.course}}" >{{course.course}}</a></td><td>{{course.city}}</td><td>{{course.state}}</td></tr>
-      {% endfor %}
+      <tr><th>Course</th><th>Address</th><th>City</th><th>State</th><th>Phone</th><th>Website</th><th>Tee Times</th></tr>
+        <tr><td>{{course.course}}</td><td>{{course.address}}</td><td>{{course.city}}</td><td>{{course.state}}</td><td>{{course.phone}}</td><td><a href={{course.website}}>Link</a></td><td><a href="/{{course.course}}/teetimes">Search</a></td></tr>
     </table>    
   </div>
 
 </body>
 
 </html>
-
-<!--
-<h1>{{ title }}</h1>
-<p>This is a bare-bones template.</p>
-<ul>
-{% for person in people %}
-  <li>{{ person.name }}</li>
-{% endfor %}
-</ul>
--->
 
 
 

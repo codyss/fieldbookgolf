@@ -34,9 +34,16 @@ router.get('/', function (req, res, next) {
 });
 
 
+// router.get('/:course', function (req, res, next) {
+//   book.getSheet(sheet, {course: req.params.course})
+//   .then(function(data) {{res.status(200).json(data);}})
+//   .catch(function(err) {console.log(err);});
+// });
+
 router.get('/:course', function (req, res, next) {
   book.getSheet(sheet, {course: req.params.course})
-  .then(function(data) {{res.status(200).json(data);}})
+  .then(function (data) {
+    res.render('course', {course: data[0]});
+  })
   .catch(function(err) {console.log(err);});
 });
-

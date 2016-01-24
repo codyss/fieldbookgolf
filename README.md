@@ -5,7 +5,10 @@ Testing the ability to connect to a fieldbook database and play around with the 
 Steps :
 
 1) Sink up fieldbook database to display in express app - DONE
-2) Set up views to display data in pretty way
+
+2) Set up views to display data in pretty way - index DONE, courses NEEDED
+
 3) Sink up kimono tee times api to show tee times too (leverage previous formatting
+
 4) Test ability to save tee times access to fieldbook database
 
