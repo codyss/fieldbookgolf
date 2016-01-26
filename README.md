@@ -6,7 +6,7 @@ Steps :
 
 1) Sink up fieldbook database to display in express app - DONE
 
-2) Set up views to display data in pretty way - index DONE, courses NEEDED
+2) Set up views to display data in pretty way - DONE
 
 3) Sink up kimono tee times api to show tee times too (leverage previous formatting
 
