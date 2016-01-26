@@ -67,8 +67,8 @@ router.get('/:course/teetimes', function (req, res, next) {
     times.cleaning();
     times.filterForCourse(req.params.course);
 
-  // res.render('teetimes', {course: times.cleanTImes});
-  res.json(times.searchCourseTimes);
+  res.render('teetimes', {teetimes: times.searchCourseTimes});
+  // res.json(times.searchCourseTimes);
 });
 });
 

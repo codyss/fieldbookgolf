@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+    <!-- Local CSS -->
+    <link href="/main.css" rel="stylesheet" >
+    <title>{{teetimes.course}}</title>
+</head>
+<body>
+
+  <div id="courses">
+    <table class="table">
+      <tr><th>Course</th><th>Date</th><th>Time</th><th>Rate</th><th>Players</th></tr>
+      {% for time in teetimes %}
+        <tr><td>{{time.course}}</td><td>{{time.date}}</td><td>{{time.time}}</td><td>{{time.rate}}</td><td>{{time.num_players}}</td></tr>
+      {% endfor %}
+    </table>    
+  </div>
+
+</body>
+
+</html>
+
+
+
