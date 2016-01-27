@@ -21,7 +21,7 @@
     <table class="table">
       <tr><th>Course</th><th>City</th><th>State</th></tr>
       {% for course in courses %}
-        <tr><td><a href="/{{course.course}}" >{{course.course}}</a></td><td>{{course.city}}</td><td>{{course.state}}</td></tr>
+        <tr><td><a href="/{{course.name}}" >{{course.name}}</a></td><td>{{course.city}}</td><td>{{course.state}}</td></tr>
       {% endfor %}
     </table>    
   </div>

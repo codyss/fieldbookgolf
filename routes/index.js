@@ -42,28 +42,48 @@ function courseName() {
 
 
 router.get('/', function (req, res, next) {
-  book.getSheet(sheet)
+  Course.find()
   .then(function(data) {
     var cleanedCourses = data.map(function (item) {
-      return {course: item.course, city: item.city, state: item.state};
+      return {name: item.name, city: item.city, state: item.state};
     });
     res.render('index', {courses: cleanedCourses});
   })
-  .catch(function(err) {console.log(err);});
+  .then(null, function(err) {console.log(err);});
 });
 
+//route to bring to page to add courses
 router.get('/add', function (req, res, next) {
   res.render('addcourse');
 });
 
+//OLD calls from Fieldbook
+// router.get('/:course', function (req, res, next) {
+//   book.getSheet(sheet, {course: req.params.course})
+//   .then(function (data) {
+//     res.render('course', {course: data[0]});
+//   })
+//   .catch(function(err) {console.log(err);});
+// });
 
-router.get('/:course', function (req, res, next) {
-  book.getSheet(sheet, {course: req.params.course})
-  .then(function (data) {
-    res.render('course', {course: data[0]});
-  })
-  .catch(function(err) {console.log(err);});
+
+//router to post a score
+router.get('/post', function (req, res, next) {
+  res.render('postscore', {course: req.query.course});
 });
+
+
+//New Course get method that pulls in data from mongo
+router.get('/:course', function (req, res, next) {
+  Course.findOne({name: req.params.course})
+  .then(function(course){
+      res.render('course', {course});
+    })
+  .then(null, function(err) {
+    console.log(err);
+  });
+});
+
 
 router.get('/:course/teetimes', function (req, res, next) {
   kimono.retrieve('4ujite74', {
@@ -74,16 +94,29 @@ router.get('/:course/teetimes', function (req, res, next) {
     times.filterForCourse(req.params.course);
 
   res.render('teetimes', {teetimes: times.searchCourseTimes});
-  // res.json(times.searchCourseTimes);
+  // res.json(times.searchCourseTimes); 
 });
 });
 
-router.post('/', function (req, res, next) {
+router.post('/add', function (req, res, next) {
   console.log(req.body);
   var courseToPost = new Course(req.body);
   return courseToPost.save().then(res.redirect('/'));
 });
 
+
+//Needs method to calculate the differential, then add the course 
+// ID (and player ID to follow later in dev) on to the score to add to DB
+router.post('/post', function (req, res, next) {
+  console.log(req.body);
+  Course.findOne({name: req.body.course})
+  .then(function (course) {
+    new Score({
+      score: req.body.score
+      // differential: 
+    })
+  })
+})
 
 
 

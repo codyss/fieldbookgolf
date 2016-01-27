@@ -12,14 +12,14 @@
 
     <!-- Local CSS -->
     <link href="/main.css" rel="stylesheet" >
-    <title>{{course.course}}</title>
+    <title>{{course.name}}</title>
 </head>
 <body>
 
   <div id="courses">
     <table class="table">
-      <tr><th>Course</th><th>Address</th><th>City</th><th>State</th><th>Phone</th><th>Website</th><th>Tee Times</th></tr>
-        <tr><td>{{course.course}}</td><td>{{course.address}}</td><td>{{course.city}}</td><td>{{course.state}}</td><td>{{course.phone}}</td><td><a href={{course.website}}>Link</a></td><td><a href="/{{course.course}}/teetimes">Search</a></td></tr>
+      <tr><th>Course</th><th>Address</th><th>City</th><th>State</th><th>Phone</th><th>Website</th><th>Post</th><th>Tee Times</th></tr>
+        <tr><td>{{course.name}}</td><td>{{course.address}}</td><td>{{course.city}}</td><td>{{course.state}}</td><td>{{course.phone}}</td><td><a href={{course.website}}>Link</a></td><td><a href="/post?course={{course.name}}">Link</a></td><td><a href="/{{course.name}}/teetimes">Search</a></td></tr>
     </table>    
   </div>
 

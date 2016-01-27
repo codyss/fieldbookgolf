@@ -34,6 +34,12 @@ var scoreSchema = new Schema({
 });
 
 
+//Need a method to calculate the differential
+scoreSchema.methods.calculateDifferential = function (score) {
+  //method should calculate the differential based on the course's information
+}
+
+
 var Course = mongoose.model('Course', courseSchema);
 var Player = mongoose.model('Player', playerSchema);
 var Score = mongoose.model('Score', scoreSchema);
