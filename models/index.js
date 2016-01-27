@@ -22,9 +22,24 @@ var courseSchema = new Schema({
 var playerSchema = new Schema({
   name: {type: String, required: true},
   email: {type: String, require: true, unique: true},
-  handicap: Number,
-  age: Number
+  handicap: Number
 });
+
+
+playerSchema.statics.findOrCreate = function (playerInfo) {
+
+    var self = this;
+
+    return this.findOne({ email: playerInfo.email }).exec()
+        .then(function (player) {
+            if (player === null) {
+                return self.create(playerInfo);
+            } else {
+                return player;
+            }
+        });
+
+};
 
 var scoreSchema = new Schema({
   score: Number,

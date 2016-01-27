@@ -14,9 +14,9 @@ Steps :
 
 3) Sink up kimono tee times api to show tee times too (leverage previous formatting) - DONE
 
-4) Post scores and track handicap - IN PROGRESS
+4) Post scores and track handicap - Score posting DONE - needs user page and handicap calculations
 
-5) Test ability to save tee times access to fieldbook database
+5) Test ability to save tee times access to mongo database
   - 'Create pseudo booking functionality, where if a tee time is clicked it is added to a new sheet'
 
 6) Sorting on the tee times page

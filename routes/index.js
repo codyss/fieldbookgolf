@@ -9,7 +9,7 @@ var models = require('../models');
 var Course = models.Course;
 var Score = models.Score;
 var Player = models.Player;
-
+var Promise = require('bluebird');
 
 var kimono = new Kimono('REK0Ffj1XIg1BhGMU3wDHLBv9kQbB2ur');
 
@@ -17,18 +17,11 @@ var kimono = new Kimono('REK0Ffj1XIg1BhGMU3wDHLBv9kQbB2ur');
 router.use(bodyParser.urlencoded({extended: false}));
 router.use(bodyParser.json());
 
-router.use(function (req, res, next) {
-    console.log(req.path, req.method);
-    next();
-});
+// router.use(function (req, res, next) {
+//     console.log(req.path, req.method);
+//     next();
+// });
 
-var sheet = 'nyccourses';
-
-var book = new fieldbook({
-            username: 'key-1',
-            password: 'w8vy4ZJcVEtBvzUGkm3V',
-            book: '56a3cf62986e730300c844f4'
-            });
 
 var course;
 
@@ -39,8 +32,6 @@ function courseName() {
         this.cleanTimes[i]['course'] = courseKey[this.cleanTimes[i]['course']];
     }
 };
-
-
 
 
 router.get('/', function (req, res, next) {
@@ -110,17 +101,23 @@ router.post('/add', function (req, res, next) {
 //Post the score, where course name is send in the POST body
 router.post('/post', function (req, res, next) {
   console.log(req.body);
-  Course.findOne({name: req.body.course})
-  .then(function (course) {
+  var coursePlayed = Course.findOne({name: req.body.course});
+  var playerPosting = Player.findOrCreate({
+    name: req.body.name,
+    email: req.body.email
+    });
+
+  Promise.all([coursePlayed, playerPosting]).spread(function (course, player) {
     var differential = (req.body.score-course.course_rating)*115/course.slope_rating;
     var postScore = new Score({
       score: req.body.score,
       course: course._id, 
-      differential: differential
+      differential: differential,
+      player: player._id
     });
     return postScore.save();
   })
-  .then(function(score) {
+  .then(function() {
     //SHOULD BE CHANGED TO REDIRECT TO A USER'S PROFILE
     res.redirect('/');
   }).then(null, function(err) {console.log(err);});
