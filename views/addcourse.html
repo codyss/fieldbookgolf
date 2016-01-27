@@ -1,0 +1,89 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <h3>Pages</h3>
+  <hr>
+  <form method="POST" action="/">
+    <div class="form-group">
+      <label for="name" class="col-sm-2 control-label">Course Name</label>
+      <div class="col-sm-10">
+        <input name="name" type="text" class="form-control" required/>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="city" class="col-sm-2 control-label">City</label>
+      <div class="col-sm-10">
+        <input name="city" type="text" class="form-control"/>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label for="state" class="col-sm-2 control-label">State</label>
+      <div class="col-sm-10">
+        <input name="state" type="text" class="form-control"/>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="address" class="col-sm-2 control-label">Address</label>
+      <div class="col-sm-10">
+         <input name="address" type="text" class="form-control" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="par" class="col-sm-2 control-label">Par</label>
+      <div class="col-sm-10">
+         <input name="par" type="number" class="form-control" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="course_rating" class="col-sm-2 control-label">Course Rating</label>
+      <div class="col-sm-10">
+         <input name="course_rating" type="number" class="form-control" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="slope_rating" class="col-sm-2 control-label">Slope Rating</label>
+      <div class="col-sm-10">
+         <input name="slope_rating" type="number" class="form-control" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="holes" class="col-sm-2 control-label">Holes</label>
+      <div class="col-sm-10">
+         <input name="holes" type="number" class="form-control" />
+      </div>
+    </div>
+
+     <div class="form-group">
+      <label for="yardage" class="col-sm-2 control-label">Yardage</label>
+      <div class="col-sm-10">
+         <input name="yardage" type="number" class="form-control" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="phone" class="col-sm-2 control-label">Phone</label>
+      <div class="col-sm-10">
+         <input name="phone" type="tel" class="form-control" />
+      </div>
+    </div>
+
+     <div class="form-group">
+      <label for="website" class="col-sm-2 control-label">Website</label>
+      <div class="col-sm-10">
+         <input name="website" type="url" class="form-control" />
+      </div>
+    </div>
+
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-primary">Add</button>
+    </div>
+  
+  </form>
+{% endblock %}

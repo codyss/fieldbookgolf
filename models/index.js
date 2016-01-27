@@ -1,14 +1,14 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-mongoose.connect('mongodb://localhost/golfdemo');
+mongoose.connect('mongodb://localhost/golfsandbox');
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'mongodb connection error: '));
 
 var courseSchema = new Schema({
   name: {type: String, required: true},
-  city: {type: String, required: true},
-  state: {type: String, required: true},
+  city: {type: String},
+  state: {type: String},
   address: String,
   par: Number,
   course_rating: Number,

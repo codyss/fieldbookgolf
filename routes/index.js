@@ -5,6 +5,8 @@ module.exports = router;
 var fieldbook = require('node-fieldbook');
 var Kimono = require('kimono');
 var teetimes = require('../teetimes/lib/teetimes');
+var models = require('../models');
+var Course = models.Course;
 
 
 var kimono = new Kimono('REK0Ffj1XIg1BhGMU3wDHLBv9kQbB2ur');
@@ -50,6 +52,10 @@ router.get('/', function (req, res, next) {
   .catch(function(err) {console.log(err);});
 });
 
+router.get('/add', function (req, res, next) {
+  res.render('addcourse');
+});
+
 
 router.get('/:course', function (req, res, next) {
   book.getSheet(sheet, {course: req.params.course})
@@ -71,5 +77,13 @@ router.get('/:course/teetimes', function (req, res, next) {
   // res.json(times.searchCourseTimes);
 });
 });
+
+router.post('/', function (req, res, next) {
+  console.log(req.body);
+  var courseToPost = new Course(req.body);
+  return courseToPost.save().then(res.redirect('/'));
+});
+
+
 
 
