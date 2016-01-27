@@ -63,6 +63,7 @@ teeTimes.prototype.courseDateOut = function () {
     for (var i = 0; i < this.cleanTimes.length; i++) {
         this.cleanTimes[i]['course'] = this.cleanTimes[i]['url'].slice(this.cleanTimes[i]['url'].indexOf('/at/')+4,this.cleanTimes[i]['url'].indexOf('/on/'));
         this.cleanTimes[i]['date'] = this.cleanTimes[i]['url'].slice(this.cleanTimes[i]['url'].indexOf('/on/')+4,this.cleanTimes[i]['url'].length);
+        this.cleanTimes[i]['date'] = this.cleanTimes[i]['date'].slice(0,1).toUpperCase().concat(this.cleanTimes[i]['date'].slice(1));
     }
 }
 

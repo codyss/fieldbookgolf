@@ -8,7 +8,11 @@ Steps :
 
 2) Set up views to display data in pretty way - DONE
 
-3) Sink up kimono tee times api to show tee times too (leverage previous formatting
+3) Sink up kimono tee times api to show tee times too (leverage previous formatting) - DONE
 
 4) Test ability to save tee times access to fieldbook database
+  - 'Create pseudo booking functionality, where if a tee time is clicked it is added to a new sheet'
 
+5) Sorting on the tee times page
+
+6) Build search page

@@ -11,6 +11,7 @@ var bodyParser = require('body-parser');
 var mime = require('mime');
 
 
+
 // templating boilerplate setup
 app.set('views', path.join(__dirname, '/views')); // where to find the views
 app.set('view engine', 'html'); // what file extension do our templates have
