@@ -7,6 +7,8 @@ var Kimono = require('kimono');
 var teetimes = require('../teetimes/lib/teetimes');
 var models = require('../models');
 var Course = models.Course;
+var Score = models.Score;
+var Player = models.Player;
 
 
 var kimono = new Kimono('REK0Ffj1XIg1BhGMU3wDHLBv9kQbB2ur');
@@ -105,18 +107,24 @@ router.post('/add', function (req, res, next) {
 });
 
 
-//Needs method to calculate the differential, then add the course 
-// ID (and player ID to follow later in dev) on to the score to add to DB
+//Post the score, where course name is send in the POST body
 router.post('/post', function (req, res, next) {
   console.log(req.body);
   Course.findOne({name: req.body.course})
   .then(function (course) {
-    new Score({
-      score: req.body.score
-      // differential: 
-    })
+    var differential = (req.body.score-course.course_rating)*115/course.slope_rating;
+    var postScore = new Score({
+      score: req.body.score,
+      course: course._id, 
+      differential: differential
+    });
+    return postScore.save();
   })
-})
+  .then(function(score) {
+    //SHOULD BE CHANGED TO REDIRECT TO A USER'S PROFILE
+    res.redirect('/');
+  }).then(null, function(err) {console.log(err);});
+});
 
 
 
