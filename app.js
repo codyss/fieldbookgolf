@@ -3,7 +3,8 @@
 var express = require('express');
 var app = express();
 var port = process.env.PORT || 8080;
-var routes = require('./routes');
+var courseRoutes = require('./routes');
+var userRoutes = require('./routes/users');
 var swig = require('swig');
 var path = require('path');
 var morgan = require('morgan');
@@ -25,7 +26,8 @@ app.use(express.static(path.join(__dirname, '/public')));
 app.use(bodyParser.urlencoded({ extended: true })); // for HTML form submits
 app.use(bodyParser.json());
 
-app.use('/', routes);
+app.use('/', courseRoutes);
+app.use('/users/', userRoutes);
 
 // logging middleware
 app.use(morgan('dev'));

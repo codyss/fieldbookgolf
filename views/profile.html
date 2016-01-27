@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+
+ <div id="courses">
+    <h2>{{player.name}}'s Scores</h2>
+    <h3>{{player.name}}'s Handicap: </h3>
+    <table class="table">
+      <tr><th>Course</th><th>Course Rating</th><th>Slope Rating</th><th>Score</th><th>Differential</th></tr>
+      {% for score in scores %}
+        <tr><td><a href="/{{score.course.name}}" >{{score.course.name}}</a></td><td>{{score.course.course_rating}}</td><td>{{score.course.slope_rating}}</td><td>{{score.score}}</td><td>{{score.differential}}</td></tr>
+      {% endfor %}
+    </table>    
+  </div>
+
+  {% endblock %}

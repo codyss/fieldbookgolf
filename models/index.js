@@ -38,8 +38,26 @@ playerSchema.statics.findOrCreate = function (playerInfo) {
                 return player;
             }
         });
-
 };
+
+
+playerSchema.statics.updateHandicap = function (playerInfo) {
+
+    var self = this;
+
+    return this.findOne({ email: playerInfo.email }).exec()
+        .then(function(player) {
+          Score.find({player: player._id}).exec();
+        })
+        .then(function (scores) {
+            if (player === null) {
+                return self.create(playerInfo);
+            } else {
+                return player;
+            }
+        });
+};
+
 
 var scoreSchema = new Schema({
   score: Number,

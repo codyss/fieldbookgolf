@@ -60,10 +60,10 @@ router.get('/add', function (req, res, next) {
 // });
 
 
-//router to post a score
-router.get('/post', function (req, res, next) {
-  res.render('postscore', {course: req.query.course});
-});
+// //router to post a score
+// router.get('/post', function (req, res, next) {
+//   res.render('postscore', {course: req.query.course});
+// });
 
 
 //New Course get method that pulls in data from mongo
@@ -98,30 +98,30 @@ router.post('/add', function (req, res, next) {
 });
 
 
-//Post the score, where course name is send in the POST body
-router.post('/post', function (req, res, next) {
-  console.log(req.body);
-  var coursePlayed = Course.findOne({name: req.body.course});
-  var playerPosting = Player.findOrCreate({
-    name: req.body.name,
-    email: req.body.email
-    });
+// Post the score, where course name is send in the POST body
+// router.post('/post', function (req, res, next) {
+//   console.log(req.body);
+//   var coursePlayed = Course.findOne({name: req.body.course});
+//   var playerPosting = Player.findOrCreate({
+//     name: req.body.name,
+//     email: req.body.email
+//     });
 
-  Promise.all([coursePlayed, playerPosting]).spread(function (course, player) {
-    var differential = (req.body.score-course.course_rating)*115/course.slope_rating;
-    var postScore = new Score({
-      score: req.body.score,
-      course: course._id, 
-      differential: differential,
-      player: player._id
-    });
-    return postScore.save();
-  })
-  .then(function() {
-    //SHOULD BE CHANGED TO REDIRECT TO A USER'S PROFILE
-    res.redirect('/');
-  }).then(null, function(err) {console.log(err);});
-});
+//   Promise.all([coursePlayed, playerPosting]).spread(function (course, player) {
+//     var differential = (req.body.score-course.course_rating)*115/course.slope_rating;
+//     var postScore = new Score({
+//       score: req.body.score,
+//       course: course._id, 
+//       differential: differential,
+//       player: player._id
+//     });
+//     return postScore.save();
+//   })
+//   .then(function() {
+//     //SHOULD BE CHANGED TO REDIRECT TO A USER'S PROFILE
+//     res.redirect('/');
+//   }).then(null, function(err) {console.log(err);});
+// });
 
 
 
